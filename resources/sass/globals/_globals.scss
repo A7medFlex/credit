@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --dominant-bmode-color: #FFFFFF;
+    --dominant-wmode-color: #000000;
+    --compl-1: #f2cc8f;
+    --compl-2: #da4b22;
+    --compl-3: #017587;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+::selection{
+    background-color: var(--compl-2);
+    color: var(--dominant-bmode-color)
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap');
+body{
+    background-color: var(--dominant-wmode-color);
+    // font-family: 'Roboto', sans-serif;
+    font-family: 'Amiri', serif;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--compl-2);
+    border-radius: 15px;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--dominant1-wmode-color);
+}
+.container{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    @media (min-width:768px) {
+        &{
+            width: 750px;
+        }
+    }
+    @media (min-width:992px) {
+        &{
+            width: 970px;
+        }
+    }
+    @media (min-width:1200px) {
+        &{
+            width: 1170px;
+        }
+    }
+}
+
+.loadingCircle{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    &::after{
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 35px;
+        height: 35px;
+        border: 3px solid var(--dominant-bmode-color);
+        border-color: var(--dominant-bmode-color) transparent var(--dominant-bmode-color) transparent;
+        animation: lds-dual-ring 1.2s ease-out infinite;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        -webkit-animation: lds-dual-ring 1.2s ease-out infinite;
+    }
+}

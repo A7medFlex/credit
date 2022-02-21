@@ -1,0 +1,22 @@
+<?php
+return[
+    'headline' => 'اعدادات',
+    'languages' => 'اللغات',
+    'arabic' => 'اللغة العربية',
+    'english' => 'اللغة الإنجليزية',
+    'german' => 'اللغة الالمانية',
+    'Credit' => 'كريديت',
+    'Find us on:' => 'سوق تجدنا على:',
+    'Logout' => 'تسجيل خروج',
+    'Youve got the wrong page.' => 'لقد ذهبت الي الصفحة الخطأ.',
+    'Its time to move on!' => 'حان الوقت لتصحيح المسار',
+    'home' => 'الرئيسية',
+    'Feel free to donate' => 'لا تتردد في التبرع',
+    'Youve canceled the donation.' => 'لقد ألغيت التبرع.',
+    'Your donation failed.' => 'تبرعك فشل',
+    'Thanks for your donation.' => 'شكرا لتبرعك.',
+    'Your donation is not approved.' => 'لم تتم الموافقة على تبرعك.',
+    'explore' => 'استكشف',
+    'soon' => 'سوف تكون متاحة قريبا',
+    'No activities yet.' => 'لا توجد أنشطة حتى الآن.',
+];

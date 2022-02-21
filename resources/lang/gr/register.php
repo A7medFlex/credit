@@ -1,0 +1,22 @@
+<?php
+return[
+    'heading' => 'Erstelle deinen Account.',
+    'heading_two' => 'Einloggen',
+    'first_name' =>'Vorname',
+    'last_name' => 'Nachname',
+    'country' => 'Wähle dein Land:',
+    'phone' => 'Telefonnummer',
+    'nabza' => 'Fügen Sie Ihre Beschreibung hinzu',
+    'email' => 'Email',
+    'password' => 'Passwort',
+    'confirm' => 'Kennwort bestätigen',
+    'role' => 'Wähle eine Rolle:',
+    'submit' => 'einreichen',
+    'aleardy' => 'Bereits registriert?',
+    'donator' => 'Spender',
+    'user' => 'Nutzer',
+    'forget' => 'Passwort vergessen?',
+    'remember' => 'Behalte mich in Erinnerung',
+    'reset' => 'Setze dein Passwort zurück',
+    'reset_two' => 'Zurücksetzen',
+];

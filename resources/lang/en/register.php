@@ -1,0 +1,22 @@
+<?php
+return[
+    'heading' => 'Create your account.',
+    'heading_two' => 'Log in',
+    'first_name' =>'First name',
+    'last_name' => 'Last name',
+    'country' => 'Choose your country:',
+    'phone' => 'Phone number',
+    'nabza' => 'Add your description',
+    'email' => 'Email',
+    'password' => 'Password',
+    'confirm' => 'Confirm Password',
+    'role' => 'Choose a role:',
+    'submit' => 'Create',
+    'aleardy' => 'Already registered?',
+    'donator' => 'Donator',
+    'user' => 'User',
+    'forget' => 'Forgot your password?',
+    'remember' => 'Remember me',
+    'reset' => 'Reset your password',
+    'reset_two' => 'Reset',
+];

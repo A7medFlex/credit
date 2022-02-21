@@ -1,0 +1,22 @@
+<?php
+return[
+    'headline' => 'Einstellungen',
+    'languages' => 'Sprachen',
+    'arabic' => 'Arabisch',
+    'english' => 'Englisch',
+    'german' => 'Deutsch',
+    'Credit' => 'Credit',
+    'Find us on:' => 'Finden Sie uns auf:',
+    'Logout' => 'Ausloggen',
+    'Youve got the wrong page.' => 'Sie haben die falsche Seite.',
+    'Its time to move on!' => 'Es ist Zeit weiterzugehen!',
+    'home' => 'Zuhause',
+    'Feel free to donate' => 'Fühlen Sie sich frei zu spenden',
+    'Youve canceled the donation.' => 'Sie haben die Spende storniert.',
+    'Your donation failed.' => 'Danke für Ihre Spende.',
+    'Thanks for your donation.' => 'Thanks for your donation.',
+    'Your donation is not approved.' => 'Ihre Spende wurde nicht genehmigt.',
+    'explore' => 'Entdecken',
+    'soon' => 'Es wird bald verfügbar sein.',
+    'No activities yet.' => 'Noch keine Aktivitäten.',
+];
