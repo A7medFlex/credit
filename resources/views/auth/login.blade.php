@@ -4,6 +4,7 @@
     <h3>{{ __('register.heading_two') }}</h3>
     <form action="{{ route('login') }}" method="POST">
         @csrf
+        @method('POST')
         <div class="errors">
             @if ($errors->all())
                 @foreach ($errors->all() as $err)

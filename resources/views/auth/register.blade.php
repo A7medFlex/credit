@@ -6,7 +6,7 @@
 
     <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
         @csrf
-
+        @method('POST')
         <div class="errors">
             @if ($errors->all())
                 @foreach ($errors->all() as $err)
