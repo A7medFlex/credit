@@ -168,7 +168,8 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE','aqueous-brushlands-28659'),
+    'secure' => env('SESSION_SECURE_COOKIE', false), // in case of cookie
 
     /*
     |--------------------------------------------------------------------------
