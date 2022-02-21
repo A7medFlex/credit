@@ -136,6 +136,7 @@ section.landing{
         }
     }
     nav{
+        pointer-events: none;
         position: absolute;
         top: 50%;
         right: 30px;
@@ -211,6 +212,7 @@ section.landing{
             }
         }
         &.active{
+            pointer-events: all;
             li{
                 transform: translateX(0);
                 -webkit-transform: translateX(0);
