@@ -24,8 +24,8 @@
                         <form action="{{ route('edit-intro') }} " class="showing" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
-                            <div class="images" style="background-image: url('{{ Storage::url($intro->images) }}')">
-                                <input type="file" name="image"  value="{{ Storage::url($intro->images) }}">
+                            <div class="images" style="background-image: url('{{ $intro->images }}')">
+                                <input type="file" name="image"  value="{{ $intro->images }}">
                                 <i class="fas fa-images"></i>
                             </div>
                             <textarea name="intro_text" cols="30" rows="10"
@@ -70,7 +70,7 @@
                             <form action="{{ route('edit-landing',$ele->id) }}" class="showing" enctype="multipart/form-data" method="POST">
                                 @method('PUT')
                                 @csrf
-                                <div class="images" style="background-image: url('{{ Storage::url($ele->images) }}')">
+                                <div class="images" style="background-image: url('{{ $ele->images }}')">
                                     <input type="file" name="image">
                                     <i class="fas fa-images"></i>
                                 </div>
@@ -101,7 +101,7 @@
                         <form action="{{ route('edit-diseased',$dis->id) }}" class="showing" enctype="multipart/form-data" method="POST">
                             @method('PUT')
                             @csrf
-                            <div class="images" style="background-image: url('{{ Storage::url($dis->images) }}')">
+                            <div class="images" style="background-image: url('{{ $dis->images }}')">
                                 <input type="file" name="image">
                                 <i class="fas fa-images"></i>
                             </div>
@@ -131,7 +131,7 @@
                         <form action="{{ route('edit-homeless',$hl->id) }}" class="showing" enctype="multipart/form-data" method="POST">
                             @method('PUT')
                             @csrf
-                            <div class="images" style="background-image: url('{{ Storage::url($hl->images) }}')">
+                            <div class="images" style="background-image: url('{{ $hl->images }}')">
                                 <input type="file" name="image">
                                 <i class="fas fa-images"></i>
                             </div>
@@ -161,7 +161,7 @@
                         <form action="{{ route('edit-children',$ch->id) }}" class="showing" enctype="multipart/form-data" method="POST">
                             @method('PUT')
                             @csrf
-                            <div class="images" style="background-image: url('{{ Storage::url($ch->images) }}')">
+                            <div class="images" style="background-image: url('{{ $ch->images }}')">
                                 <input type="file" name="image">
                                 <i class="fas fa-images"></i>
                             </div>
@@ -191,7 +191,7 @@
                         <form action="{{ route('edit-stories',$st->id) }}" class="showing" enctype="multipart/form-data" method="POST">
                             @method('PUT')
                             @csrf
-                            <div class="images" style="background-image: url('{{ Storage::url($st->images) }}')">
+                            <div class="images" style="background-image: url('{{ $st->images }}')">
                                 <input type="file" name="image">
                                 <i class="fas fa-images"></i>
                             </div>
@@ -221,7 +221,7 @@
                         <form action="{{ route('edit-FAQs',$f->id) }}" class="showing" enctype="multipart/form-data" method="POST">
                             @method('PUT')
                             @csrf
-                            <div class="images" style="background-image: url('{{ Storage::url($f->images) }}')">
+                            <div class="images" style="background-image: url('{{ $f->images }}')">
                                 <input type="file" name="image">
                                 <i class="fas fa-images"></i>
                             </div>
@@ -251,7 +251,7 @@
                         <form action="{{ route('edit-about',$ab->id) }}" class="showing" enctype="multipart/form-data" method="POST">
                             @method('PUT')
                             @csrf
-                            <div class="images" style="background-image: url('{{ Storage::url($ab->images) }}')">
+                            <div class="images" style="background-image: url('{{ $ab->images }}')">
                                 <input type="file" name="image">
                                 <i class="fas fa-images"></i>
                             </div>
