@@ -50,8 +50,7 @@ class RegisteredUserController extends Controller
 
         // $path = $request->user_profile_image->store('public/'.'/user_profile_images');
 
-        $path = Storage::disk('s3')->put('user_profile_images', $request->user_profile_image,'public');
-        // $path = $request->user_profile_image->storePublicly()
+        $path = $request->user_profile_image->storePublicly('user_profile_images','s3');
         $path = Storage::disk('s3')->url($path);
 
         if($request->role == 'admin'){

@@ -22,7 +22,7 @@
                     @csrf
                     @method('PUT')
                     <div class="edit-img" @if (str_replace('_', '-', app()->getLocale()) == 'ar') style="margin-right:0;margin-left:30px;" @endif>
-                        <div class="old-img" style="background-image: url('{{ Storage::url(Auth::user()->user_profile_image) }}')"></div>
+                        <div class="old-img" style="background-image: url('{{ Auth::user()->user_profile_image }}')"></div>
                         <div class="editing">
                             <i class="fas fa-camera"></i>
                         </div>

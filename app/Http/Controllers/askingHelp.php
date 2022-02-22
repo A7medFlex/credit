@@ -10,6 +10,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\askingHelpM;
 use App\Models\askingHelpImages;
+use Illuminate\Support\Facades\Storage;
+
 class askingHelp extends Controller
 {
     public function index()
@@ -29,7 +31,11 @@ class askingHelp extends Controller
         ]);
         if($request->hasFile('post_images')){
             foreach ($request->file('post_images') as $img) {
-                $path = $img->store('public/'.$user->id.'/'.$post->id.'/asking_help_images');
+
+                $path = $img->storePublicly('public/'.$user->id.'/'.$post->id.'/asking_help_images','s3');
+                $path = Storage::disk('s3')->url($path);
+
+                // $path = $img->store('public/'.$user->id.'/'.$post->id.'/asking_help_images');
                 $images = askImages::create([
                     'ask_id'=>$post->id,
                     'post_images'=>$path

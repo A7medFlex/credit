@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\comments;
 use App\Models\PostsModell;
 use App\Models\User;
+use App\Models\ThemeModel;
 use Illuminate\Http\Request;
 
 class wholePost extends Controller
@@ -21,6 +22,7 @@ class wholePost extends Controller
     public function settings()
     {
         $allusers = User::all();
-        return view('website_settings',compact('allusers'));
+        $theme = ThemeModel::all();
+        return view('website_settings',compact('allusers','theme'));
     }
 }

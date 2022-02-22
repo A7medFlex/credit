@@ -85,7 +85,7 @@ Route::get('/how-to-use', function(){
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'App\Http\Controllers\DashboardController@index')
         ->name('dashboard');
-    Route::post('/dashboard', 'App\Http\Controllers\DashboardController@index')
+    Route::post('/home', 'App\Http\Controllers\DashboardController@index')
         ->name('dashboard');
     Route::get('/edit-profile/{currId}', [EditProfile::class, 'index'])
         ->name('edit-profile');
@@ -127,6 +127,7 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
     Route::post('/managment/stories', [Managment::class, 'stories'])->name('manage-stories');
     Route::post('/managment/FAQs', [Managment::class, 'FAQs'])->name('manage-FAQs');
     Route::post('/managment/about', [Managment::class, 'about'])->name('manage-about');
+    Route::post('/managment/theme', [Managment::class, 'theme'])->name('manage-theme');
     // edit pages
     Route::put('/managment/intro/edit', [Managment::class, 'editIntro'])->name('edit-intro');
     Route::put('/managment/landing/edit/{id}', [Managment::class, 'editLanding'])->name('edit-landing');

@@ -34,8 +34,15 @@ class EditProfile extends Controller
             'country'=>$request->country,
         ]);
         if($request->has('user_profile_image')){
-            Storage::delete($user->user_profile_image);
-            $path = $request->user_profile_image->store('public/'.'/user_profile_images');
+
+            Storage::disk('s3')->delete($user->user_profile_image);
+            // $exists = Storage::disk('s3')->exists($request->user_profile_image);
+            // dd($exists);
+            $path = $request->user_profile_image->storePublicly('user_profile_images','s3');
+            $path = Storage::disk('s3')->url($path);
+
+            // Storage::delete($user->user_profile_image);
+            // $path = $request->user_profile_image->store('public/'.'/user_profile_images');
             $user->update([
                 'user_profile_image' => $path,
             ]);

@@ -21,7 +21,7 @@
                     @if (str_replace('_', '-', app()->getLocale()) == 'ar')
                         <span class="post-owner-image" style="margin-right: 0;margin-left:12px">
                             @if (Auth::user()->user_profile_image)
-                            <img src="{{ Storage::url(Auth::user()->user_profile_image) }}" alt="">
+                            <img src="{{ Auth::user()->user_profile_image }}" alt="">
                             @else
                                 <i class="fas fa-user-tie"></i>
                             @endif
@@ -29,7 +29,7 @@
                     @else
                         <span class="post-owner-image">
                             @if (Auth::user()->user_profile_image)
-                            <img src="{{ Storage::url(Auth::user()->user_profile_image) }}" alt="">
+                            <img src="{{ Auth::user()->user_profile_image }}" alt="">
                             @else
                                 <i class="fas fa-user-tie"></i>
                             @endif
@@ -79,7 +79,7 @@
                     @if (str_replace('_', '-', app()->getLocale()) == 'ar')
                         <span class="post-owner-image" style="margin-right: 0;margin-left:12px">
                             @if (Auth::user()->user_profile_image)
-                            <img src="{{ Storage::url(Auth::user()->user_profile_image) }}" alt="">
+                            <img src="{{ Auth::user()->user_profile_image }}" alt="">
                             @else
                                 <i class="fas fa-user-tie"></i>
                             @endif
@@ -87,7 +87,7 @@
                     @else
                         <span class="post-owner-image">
                             @if (Auth::user()->user_profile_image)
-                            <img src="{{ Storage::url(Auth::user()->user_profile_image) }}" alt="">
+                            <img src="{{ Auth::user()->user_profile_image }}" alt="">
                             @else
                                 <i class="fas fa-user-tie"></i>
                             @endif

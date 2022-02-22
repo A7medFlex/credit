@@ -28,11 +28,11 @@
                         @if ($post->images->count())
                             <div class="post-images-carsoul">
                                 <div class="images-slider" draggable="true">
-                                    <img src="{{ Storage::url($post->images->last()->post_images) }}" alt="" id="last-clone">
+                                    <img src="{{ $post->images->last()->post_images }}" alt="" id="last-clone">
                                     @foreach ($post->images as $key => $img)
-                                        <img src="{{ Storage::url($img->post_images) }}" alt="">
+                                        <img src="{{ $img->post_images }}" alt="">
                                     @endforeach
-                                    <img src="{{ Storage::url($post->images->first()->post_images) }}" alt="" id="first-clone">
+                                    <img src="{{ $post->images->first()->post_images }}" alt="" id="first-clone">
                                 </div>
                             </div>
                             @if ($post->images->count() <= 1)
@@ -47,7 +47,7 @@
                     </div>
                     <div class="post-data">
                         <div class="user-data">
-                            <span class="user-image" style="background-image: url('{{ Storage::url($user->user_profile_image) }}')"></span>
+                            <span class="user-image" style="background-image: url('{{ $user->user_profile_image }}')"></span>
                             @if (str_replace('_', '-', app()->getLocale()) == 'ar')
                             <span class="user"style="margin-right: 15px;margin-left:0">
                                 <span class="user-name">{{ $user->first_name }} {{ $user->last_name }}</span>
@@ -79,7 +79,7 @@
                         <form action="{{ route('post-comment',['id'=> $post->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="comment-owner">
-                                <div class="commenter-img" style="background-image: url('{{ Storage::url(Auth::user()->user_profile_image) }}')"></div>
+                                <div class="commenter-img" style="background-image: url('{{ Auth::user()->user_profile_image }}')"></div>
                                 @if (str_replace('_', '-', app()->getLocale()) == 'ar')
                                     <div class="commenter-name" style="margin-right: 10px;margin-left:0;">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>
                                 @else
@@ -99,7 +99,7 @@
                             @foreach ($comments as $comm )
                                 <div class="comm">
                                     <div class="comm-owner-data">
-                                        <span class="comm-owner-img" style="background-image: url('{{ Storage::url($comm->user->user_profile_image) }}')"></span>
+                                        <span class="comm-owner-img" style="background-image: url('{{ $comm->user->user_profile_image }}')"></span>
                                         @if (str_replace('_', '-', app()->getLocale()) == 'ar')
                                             <span class="comm-owner-name" style="margin-right: 10px;margin-left:0;">{{ $comm->user->first_name }} {{ $comm->user->last_name }}</span>
                                         @else

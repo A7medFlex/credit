@@ -15,7 +15,7 @@
     <div class="iner-body">
         <header class="user-profile-header"
             @if ($user->user_profile_image)
-                style="background-image: url('{{ Storage::url($user->user_profile_image) }}')"
+                style="background-image: url('{{ $user->user_profile_image }}')"
             @else
                 style="background:blue"
             @endif
@@ -23,7 +23,7 @@
         <div class="overlay"></div>
         <div class="upi"
             @if ($user->user_profile_image)
-            style="background-image: url('{{ Storage::url($user->user_profile_image) }}')"
+            style="background-image: url('{{ $user->user_profile_image }}')"
             @else
                 style="background:blue"
             @endif
@@ -32,6 +32,66 @@
             @include('layouts._dashboard_header')
         </div>
     </header>
+    </div>
+
+    <div class="adding-post-form">
+        @if ($user->id == Auth::user()->id && Auth::user()->hasRole('donator'))
+            <form action="{{ route('store-post') }}" class="add-post-form" enctype="multipart/form-data" method="POST">
+                @csrf
+                <div class="create-post-word">{{ __('dashboard.createForm') }}</div>
+                <div class="post-owner-adding">
+                    @if (str_replace('_', '-', app()->getLocale()) == 'ar')
+                        <span class="post-owner-image" style="margin-right: 0;margin-left:12px">
+                            @if (Auth::user()->user_profile_image)
+                            <img src="{{ Auth::user()->user_profile_image }}" alt="">
+                            @else
+                                <i class="fas fa-user-tie"></i>
+                            @endif
+                        </span>
+                    @else
+                        <span class="post-owner-image">
+                            @if (Auth::user()->user_profile_image)
+                            <img src="{{ Auth::user()->user_profile_image }}" alt="">
+                            @else
+                                <i class="fas fa-user-tie"></i>
+                            @endif
+                        </span>
+                    @endif
+                    <div>
+                        <span class="post-owner-name">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+                        <span class="post-owner-country">{{ Auth::user()->country }}</span>
+                    </div>
+                </div>
+                <input type="text" name="post_title" placeholder="{{ __('dashboard.helptitle') }}">
+                <textarea name="post_content" cols="30" rows="10" placeholder="{{ __('dashboard.helpdesc') }}"></textarea>
+                <div class="post-images-adding">
+                    <i class="fas fa-images"></i>
+                    <input type="file" name="post_images[]" id="post-images-input" multiple >
+                </div>
+
+                <div class="images-preview">
+
+                </div>
+                @if ($errors->all())
+                    <div class="adding-post-back-err">
+                        @foreach ($errors->all() as $err)
+                            <div class="error">{{ $err }}</div>
+                        @endforeach
+                    </div>
+                @endif
+                @if (str_replace('_', '-', app()->getLocale()) == 'ar')
+                    <div class="adding-post-err">برجاء إكمال الحقول الفارغة أولاً.</div>
+                @endif
+                @if (str_replace('_', '-', app()->getLocale()) == 'gr')
+                    <div class="adding-post-err">Bitte füllen Sie zuerst die leeren Felder aus.</div>
+                @endif
+                @if (str_replace('_', '-', app()->getLocale()) == 'en')
+                    <div class="adding-post-err">Please complete the empty fields first.</div>
+                @endif
+                <button type="submit">{{ __('dashboard.create') }}</button>
+            </form>
+        @endif
+
     </div>
     <div class="iner-body">
         <section class="user-profile">
@@ -62,7 +122,7 @@
                                             @if (str_replace('_', '-', app()->getLocale()) == 'ar')
                                                 <span class="post-owner-image" style="margin-right: 0;margin-left:12px">
                                                     @if ($post->user->user_profile_image)
-                                                        <img src="{{ Storage::url($post->user->user_profile_image) }}" alt="">
+                                                        <img src="{{ $post->user->user_profile_image }}" alt="">
                                                     @else
                                                         <i class="fas fa-user-tie"></i>
                                                     @endif
@@ -70,7 +130,7 @@
                                             @else
                                                 <span class="post-owner-image">
                                                     @if ($post->user->user_profile_image)
-                                                        <img src="{{ Storage::url($post->user->user_profile_image) }}" alt="">
+                                                        <img src="{{ $post->user->user_profile_image }}" alt="">
                                                     @else
                                                         <i class="fas fa-user-tie"></i>
                                                     @endif
@@ -88,7 +148,7 @@
                                         <div class="post-images">
                                             <a href="{{ route('single-post',['id'=> $post->id]) }}">
                                                 <div class="img-cont">
-                                                    <img src="{{ Storage::url($post->images->first()->post_images) }}" alt="">
+                                                    <img src="{{ $post->images->first()->post_images }}" alt="">
                                                     <div class="post-img-overlay"></div>
                                                 </div>
                                             </a>
@@ -220,6 +280,94 @@
                 document.querySelector('header.user-profile-header').classList.toggle('inert')
                 arrowToggleSideBar.classList.toggle('active');
                 sideBar.classList.toggle('active');
+            }
+        })
+        let createPostBtn = document.querySelector('.create-post-cont .create-post');
+        // handle adding post
+        let formPopUp = document.querySelector('.adding-post-form')
+        if(createPostBtn){
+            createPostBtn.addEventListener('click',()=>{
+                if(formPopUp.classList.contains("active")){
+                    formPopUp.classList.toggle("active");
+                    formPopUp.classList.toggle("inert");
+                    document.querySelectorAll(".iner-body").forEach(ele=>{
+                        ele.classList.toggle('inert')
+                    })
+                }else if(formPopUp.classList.contains("inert")){
+                    formPopUp.classList.toggle("inert");
+                    formPopUp.classList.toggle("active");
+                    document.querySelectorAll(".iner-body").forEach(ele=>{
+                        ele.classList.toggle('inert')
+                    })
+                }else{
+                    formPopUp.classList.toggle("active");
+                    document.querySelectorAll(".iner-body").forEach(ele=>{
+                        ele.classList.toggle('inert')
+                    })
+                }
+            })
+        }
+        document.addEventListener('click',(e)=>{
+            if(e.target !== formPopUp && e.target !== createPostBtn && formPopUp.classList.contains("active") && e.target !== document.querySelector('.adding-post-form form')){
+                formPopUp.classList.toggle("active");
+                formPopUp.classList.toggle("inert");
+                document.querySelectorAll(".iner-body").forEach(ele=>{
+                    ele.classList.toggle('inert')
+                })
+            }
+        })
+        // manage the file input action
+        let fileInput = document.querySelector('.post-images-adding #post-images-input');
+        if(fileInput){
+            let fileInputDiv = document.querySelector('.add-post-form .post-images-adding .fa-images');
+            let imagesPreview = document.querySelector('.images-preview');
+            fileInputDiv.addEventListener('click',(e)=>{
+                fileInput.click();
+            })
+
+            fileInput.onchange = ()=>{
+                let images = [];
+                let image = fileInput.files;
+                for (let i = 0; i < image.length; i++) {
+                    images.push({
+                        'name':image[i].name,
+                        'url':URL.createObjectURL(image[i]),
+                        'file':image[i]
+                    })
+                }
+                images.forEach(img=>{
+                    let imgContainer = document.createElement('div')
+                    let pImg = document.createElement('img')
+                    pImg.src = img.url;
+                    imgContainer.appendChild(pImg)
+                    imagesPreview.appendChild(imgContainer)
+                })
+            }
+        }
+        // manage popup clicking items problem
+        let popupPostItems = document.querySelector('.adding-post-form form').children;
+        for (let i = 0; i < popupPostItems.length; i++){
+            popupPostItems[i].addEventListener('click',(e)=>{
+                e.stopPropagation();
+            })
+        }
+        // validation of adding a post
+        let addingPostsFields = [];
+        addingPostsFields.push(
+            popupPostItems[3],
+            popupPostItems[4]
+        )
+        document.querySelector('.adding-post-form form').onsubmit = (e)=>{
+            if(!addingPostsFields[0].value || !addingPostsFields[1].value){
+                e.preventDefault()
+                document.querySelector('.adding-post-form form .adding-post-err').style.display = 'block'
+            }else{
+                document.querySelector('.adding-post-form form .adding-post-err').style.display = 'none'
+            }
+        }
+        addingPostsFields.forEach(field=>{
+            field.oninput = ()=>{
+                document.querySelector('.adding-post-form form .adding-post-err').style.display = 'none'
             }
         })
     </script>

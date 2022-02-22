@@ -16,7 +16,7 @@
 
             @if ($intro)
                 @if ($intro->count())
-                <main style="background-image: url('{{ Storage::url($intro->images) }}');">
+                <main style="background-image: url('{{ $intro->images }}');">
                     <div class="main-inner">
                         <p>{{ $intro->sec_text }}</p>
                         <a href="/home">{{ __('settings.explore') }}</a>
@@ -49,7 +49,7 @@
                         @if ($land->sec_title == 'intro')
                         @else
                             <a class="card" href="/{{ strtolower($land->sec_title) }}">
-                                <div class="card__background" style="background-image: url('{{ Storage::url($land->images) }}');"></div>
+                                <div class="card__background" style="background-image: url('{{ $land->images }}');"></div>
                                 <div class="card__content">
                                     <h3 class="card__heading">{{ $land->sec_title }}</h3>
                                     <p class="card__category">{{ $land->sec_text }}</p>

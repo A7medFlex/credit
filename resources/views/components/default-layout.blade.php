@@ -29,7 +29,7 @@
             <div class="card-grid">
                 @foreach ($data as $da)
                     <a href="#" class="card">
-                        <div class="card__background" style="background-image: url('{{ Storage::url($da->images) }}');"></div>
+                        <div class="card__background" style="background-image: url('{{ $da->images }}');"></div>
                         <div class="card__content">
                             <h3 class="card__heading">{{ $da->sec_title }}</h3>
                             <p class="card__category">{{ $da->sec_text }}</p>

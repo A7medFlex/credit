@@ -1,6 +1,6 @@
 <aside class="dash-aside" style="left: 0;">
     <a href="{{ route('user-profile',['id'=> Auth::user()->id]) }}" class="user-aside-image">
-        <div style="background-image: url({{ Storage::url(Auth::user()->user_profile_image) }})"></div>
+        <div style="background-image: url({{ Auth::user()->user_profile_image }})"></div>
     </a>
     <a href="{{ route('user-profile',['id'=> Auth::user()->id]) }}" class="user-aside-name">
         <div>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</div>

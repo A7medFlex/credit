@@ -13,7 +13,7 @@
            @foreach ($asks as $ask)
                 <a href="{{ route('single-ask',['id' => $ask->id]) }}">
                     <div class="ask-item">
-                        <div class="user-img" style="background-image: url('{{ Storage::url($ask->user->user_profile_image) }}')"></div>
+                        <div class="user-img" style="background-image: url('{{ $ask->user->user_profile_image }}')"></div>
                         <div class="text" @if (str_replace('_', '-', app()->getLocale()) == 'ar') style="margin-left:0px;margin-right:20px;" @endif>
                             <div class="ask-title">{{ $ask->post_title }}</div>
                             <div class="ask-date">{{ $ask->created_at->diffForHumans()  }}</div>

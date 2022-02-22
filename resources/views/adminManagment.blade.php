@@ -262,6 +262,22 @@
                         </form>
                     @endforeach
                 </section>
+                <section class="theme-page">
+                    <h2 @if (str_replace('_', '-', app()->getLocale()) == 'ar') class="ar" @endif>{{ __('managment.About Page') }}</h2 @if (str_replace('_', '-', app()->getLocale()) == 'ar') class="ar" @endif>
+                    <h4>{{ __('managment.Add a about page section') }}</h4>
+                    <form action="{{ route('manage-theme') }}" enctype="multipart/form-data" method="POST">
+                        @csrf
+                        @method('POST')
+                        <div>
+                            <input type="text" name="sec_title" placeholder="{{ __('managment.Section title . . .') }}">
+                            <div class="images">
+                                <input type="file" name="image">
+                                <i class="fas fa-images"></i>
+                            </div>
+                        </div>
+                        <button type="submit">{{ __('dashboard.create') }}</button>
+                    </form>
+                </section>
             </div>
         </section>
         @include('layouts._footer')

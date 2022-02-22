@@ -7,6 +7,8 @@ use App\Models\PostsModell;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class PostController extends Controller
 {
@@ -24,7 +26,10 @@ class PostController extends Controller
         ]);
         if($request->hasFile('post_images')){
             foreach ($request->file('post_images') as $img) {
-                $path = $img->store('public/'.$user->id.'/'.$post->id.'/asking_help_images');
+                // $path = $img->store('public/'.$user->id.'/'.$post->id.'/asking_help_images');
+                $path = $img->storePublicly('public/'.$user->id.'/'.$post->id.'/asking_help_images','s3');
+                $path = Storage::disk('s3')->url($path);
+
                 $images = PostsImagesModell::create([
                     'posts_modell_id'=>$post->id,
                     'post_images'=>$path

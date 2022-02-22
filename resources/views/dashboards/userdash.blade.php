@@ -33,7 +33,7 @@
                             @if (str_replace('_', '-', app()->getLocale()) == 'ar')
                                 <span class="post-owner-image" style="margin-right: 0;margin-left:12px">
                                     @if ($post->user->user_profile_image)
-                                        <img src="{{ Storage::url($post->user->user_profile_image) }}" alt="">
+                                        <img src="{{ $post->user->user_profile_image }}" alt="">
                                     @else
                                         <i class="fas fa-user-tie"></i>
                                     @endif
@@ -41,7 +41,7 @@
                             @else
                                 <span class="post-owner-image">
                                     @if ($post->user->user_profile_image)
-                                        <img src="{{ Storage::url($post->user->user_profile_image) }}" alt="">
+                                        <img src="{{ $post->user->user_profile_image }}" alt="">
                                     @else
                                         <i class="fas fa-user-tie"></i>
                                     @endif
@@ -59,7 +59,7 @@
                         <div class="post-images">
                             <a href="{{ route('single-post',['id'=> $post->id]) }}">
                                 <div class="img-cont">
-                                    <img src="{{ Storage::url($post->images->first()->post_images) }}" alt="">
+                                    <img src="{{ $post->images->first()->post_images }}" alt="">
                                     <div class="post-img-overlay"></div>
                                 </div>
                             </a>

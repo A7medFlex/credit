@@ -9,8 +9,10 @@ use App\Models\FAQsPage;
 use App\Models\homelessModel;
 use App\Models\landingPage;
 use App\Models\storiesPage;
+use App\Models\ThemeModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Managment extends Controller
 {
@@ -43,7 +45,9 @@ class Managment extends Controller
     public function landing(Request $request)
     {
         if($request->has('intro_text')){
-            $path = $request->image->store('public/landingPage');
+
+            $path = $request->image->storePublicly('public/landingPage','s3');
+            $path = Storage::disk('s3')->url($path);
 
             $landing = landingPage::create([
                 'sec_title'=>'intro',
@@ -52,7 +56,8 @@ class Managment extends Controller
             ]);
         }
         if($request->has('sec_title')){
-            $path = $request->image->store('public/landingPage');
+            $path = $request->image->storePublicly('public/landingPage','s3');
+            $path = Storage::disk('s3')->url($path);
 
             $landing = landingPage::create([
                 'sec_title'=>$request->sec_title,
@@ -62,11 +67,14 @@ class Managment extends Controller
         }
         return redirect()->back();
     }
+
     // manage diseased page
     public function diseased(Request $request)
     {
         if($request->has('sec_title')){
-            $path = $request->image->store('public/diseasedPage');
+
+            $path = $request->image->storePublicly('public/diseasedPage','s3');
+            $path = Storage::disk('s3')->url($path);
 
             $diseased = diseasedPage::create([
                 'sec_title'=>$request->sec_title,
@@ -76,11 +84,27 @@ class Managment extends Controller
         }
         return redirect()->back();
     }
+    // manage theme page
+    public function theme(Request $request)
+    {
+        if($request->has('sec_title')){
+
+            $path = $request->image->storePublicly('public/themePage','s3');
+            $path = Storage::disk('s3')->url($path);
+
+            $theme = ThemeModel::create([
+                'sec_title'=>$request->sec_title,
+                'image'=>$path
+            ]);
+        }
+        return redirect()->back();
+    }
     // manage homeless page
     public function homeless(Request $request)
     {
         if($request->has('sec_title')){
-            $path = $request->image->store('public/homelessPage');
+            $path = $request->image->storePublicly('public/homelessPage','s3');
+            $path = Storage::disk('s3')->url($path);
 
             $homeless = homelessModel::create([
                 'sec_title'=>$request->sec_title,
@@ -94,7 +118,9 @@ class Managment extends Controller
     public function children(Request $request)
     {
         if($request->has('sec_title')){
-            $path = $request->image->store('public/childrenPage');
+            // $path = $request->image->store('public/childrenPage');
+            $path = $request->image->storePublicly('public/childrenPage','s3');
+            $path = Storage::disk('s3')->url($path);
 
             $children = childrenModel::create([
                 'sec_title'=>$request->sec_title,
@@ -108,7 +134,9 @@ class Managment extends Controller
     public function stories(Request $request)
     {
         if($request->has('sec_title')){
-            $path = $request->image->store('public/storiesPage');
+            // $path = $request->image->store('public/storiesPage');
+            $path = $request->image->storePublicly('public/storiesPage','s3');
+            $path = Storage::disk('s3')->url($path);
 
             $stories = storiesPage::create([
                 'sec_title'=>$request->sec_title,
@@ -122,7 +150,9 @@ class Managment extends Controller
     public function FAQs(Request $request)
     {
         if($request->has('sec_title')){
-            $path = $request->image->store('public/FAQsPage');
+            // $path = $request->image->store('public/FAQsPage');
+            $path = $request->image->storePublicly('public/FAQsPage','s3');
+            $path = Storage::disk('s3')->url($path);
 
             $FAQs = FAQsPage::create([
                 'sec_title'=>$request->sec_title,
@@ -136,7 +166,9 @@ class Managment extends Controller
     public function about(Request $request)
     {
         if($request->has('sec_title')){
-            $path = $request->image->store('public/aboutPage');
+            // $path = $request->image->store('public/aboutPage');
+            $path = $request->image->storePublicly('public/aboutPage','s3');
+            $path = Storage::disk('s3')->url($path);
 
             $about = aboutPage::create([
                 'sec_title'=>$request->sec_title,
@@ -155,7 +187,10 @@ class Managment extends Controller
                 'sec_text'=>$request->intro_text,
             ]);
             if($request->has('image')){
-                $path = $request->image->store('public/landingPage');
+                // $path = $request->image->store('public/landingPage');
+                $path = $request->image->storePublicly('public/landingPage','s3');
+                $path = Storage::disk('s3')->url($path);
+
                 $intro->update([
                     'images' => $path,
                 ]);
@@ -173,7 +208,10 @@ class Managment extends Controller
                 'sec_text'=>$request->sec_text,
             ]);
             if($request->has('image')){
-                $path = $request->image->store('public/landingPage');
+                // $path = $request->image->store('public/landingPage');
+                $path = $request->image->storePublicly('public/landingPage','s3');
+                $path = Storage::disk('s3')->url($path);
+
                 $landing->update([
                     'images' => $path,
                 ]);
@@ -189,7 +227,9 @@ class Managment extends Controller
             'sec_text'=>$request->sec_text,
         ]);
         if($request->has('image')){
-            $path = $request->image->store('public/diseasedPage');
+            // $path = $request->image->store('public/diseasedPage');
+            $path = $request->image->storePublicly('public/diseasedPage','s3');
+            $path = Storage::disk('s3')->url($path);
             $diseased->update([
                 'images' => $path,
             ]);
@@ -204,7 +244,9 @@ class Managment extends Controller
             'sec_text'=>$request->sec_text,
         ]);
         if($request->has('image')){
-            $path = $request->image->store('public/homelessPage');
+            $path = $request->image->storePublicly('public/homelessPage','s3');
+            $path = Storage::disk('s3')->url($path);
+            // $path = $request->image->store('public/homelessPage');
             $homeless->update([
                 'images' => $path,
             ]);
@@ -219,7 +261,9 @@ class Managment extends Controller
             'sec_text'=>$request->sec_text,
         ]);
         if($request->has('image')){
-            $path = $request->image->store('public/childrenPage');
+            // $path = $request->image->store('public/childrenPage');
+            $path = $request->image->storePublicly('public/childrenPage','s3');
+            $path = Storage::disk('s3')->url($path);
             $children->update([
                 'images' => $path,
             ]);
@@ -234,7 +278,10 @@ class Managment extends Controller
             'sec_text'=>$request->sec_text,
         ]);
         if($request->has('image')){
-            $path = $request->image->store('public/FAQsPage');
+            // $path = $request->image->store('public/FAQsPage');
+            $path = $request->image->storePublicly('public/FAQsPage','s3');
+            $path = Storage::disk('s3')->url($path);
+
             $FAQs->update([
                 'images' => $path,
             ]);
@@ -249,7 +296,9 @@ class Managment extends Controller
             'sec_text'=>$request->sec_text,
         ]);
         if($request->has('image')){
-            $path = $request->image->store('public/storiesPage');
+            // $path = $request->image->store('public/storiesPage');
+            $path = $request->image->storePublicly('public/storiesPage','s3');
+            $path = Storage::disk('s3')->url($path);
             $stories->update([
                 'images' => $path,
             ]);
@@ -264,7 +313,9 @@ class Managment extends Controller
             'sec_text'=>$request->sec_text,
         ]);
         if($request->has('image')){
-            $path = $request->image->store('public/aboutPage');
+            // $path = $request->image->store('public/aboutPage');
+            $path = $request->image->storePublicly('public/aboutPage','s3');
+            $path = Storage::disk('s3')->url($path);
             $about->update([
                 'images' => $path,
             ]);

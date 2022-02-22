@@ -20,17 +20,31 @@
         <section class="theme-manage">
             <div class="container">
                 <h3>{{ __('dashboard.Lightdark') }}</h3>
-                <div class="light-dark">
-                    <div class="light" data-color="light" style="background-image: url('{{ Storage::url('theme/lightthemewebsite.png') }}')">
 
-                    </div>
-                    <div class="dark active" data-color="dark" style="background-image: url('{{ Storage::url('theme/blackthemewebsite.png') }}')"></div>
+                <div class="light-dark">
+                    @foreach ($theme as $th )
+                        @if ($th->sec_title == 'light')
+                            <div class="light" data-color="light" style="background-image: url('{{ $th->image }}')">
+                            </div>
+                        @endif
+                        @if ($th->sec_title == 'dark')
+                            <div class="dark active" data-color="dark" style="background-image: url('{{ $th->image }}')"></div>
+                        @endif
+                    @endforeach
                 </div>
                 <h3>{{ __('dashboard.themetwo') }}</h3>
                 <div class="dominant-colors">
-                    <div class="red" data-color="#cd3a3a" style="background-image: url('{{ Storage::url('theme/reddwebsitetheme.png') }}')"></div>
-                    <div class="green" data-color="#48b784" style="background-image: url('{{ Storage::url('theme/greenwebsitetheme.png') }}')"></div>
-                    <div class="blue active" data-color="#da4b22" style="background-image: url('{{ Storage::url('theme/blackthemewebsite.png') }}')"></div>
+                    @foreach ($theme as $th )
+                        @if ($th->sec_title == 'red')
+                            <div class="red" data-color="#cd3a3a" style="background-image: url('{{ $th->image }}')"></div>
+                        @endif
+                        @if ($th->sec_title == 'green')
+                            <div class="green" data-color="#48b784" style="background-image: url('{{ $th->image }}')"></div>
+                        @endif
+                        @if ($th->sec_title == 'dark')
+                            <div class="blue active" data-color="#da4b22" style="background-image: url('{{ $th->image }}')"></div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="container lang">
@@ -155,7 +169,22 @@
             });
         }
         });
-
+        // manage side bar toggling
+        let arrowToggleSideBar = document.querySelector('div.toggle-aside i');
+        let sideBar = document.querySelector('aside.dash-aside');
+        let settingsPage = document.querySelector('.theme-manage')
+        arrowToggleSideBar.addEventListener('click',()=>{
+            settingsPage.classList.toggle('inert')
+            arrowToggleSideBar.classList.toggle('active');
+            sideBar.classList.toggle('active');
+        })
+        document.addEventListener('click',(e)=>{
+            if(e.target !== sideBar && e.target !== arrowToggleSideBar && sideBar.classList.contains("active")){
+                settingsPage.classList.toggle('inert');
+                arrowToggleSideBar.classList.toggle('active');
+                sideBar.classList.toggle('active');
+            }
+        })
         // manage colors themes
         let lightDark = document.querySelectorAll('.theme-manage .light-dark div')
         let dominantColors = document.querySelectorAll('.theme-manage .dominant-colors div')
@@ -204,22 +233,7 @@
                 localStorage.setItem("dominantColor", e.currentTarget.dataset.color);
             })
         })
-        // manage side bar toggling
-        let arrowToggleSideBar = document.querySelector('div.toggle-aside i');
-        let sideBar = document.querySelector('aside.dash-aside');
-        let settingsPage = document.querySelector('.theme-manage')
-        arrowToggleSideBar.addEventListener('click',()=>{
-            settingsPage.classList.toggle('inert')
-            arrowToggleSideBar.classList.toggle('active');
-            sideBar.classList.toggle('active');
-        })
-        document.addEventListener('click',(e)=>{
-            if(e.target !== sideBar && e.target !== arrowToggleSideBar && sideBar.classList.contains("active")){
-                settingsPage.classList.toggle('inert');
-                arrowToggleSideBar.classList.toggle('active');
-                sideBar.classList.toggle('active');
-            }
-        })
+
     </script>
 </body>
 </html>

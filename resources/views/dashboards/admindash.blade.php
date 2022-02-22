@@ -54,7 +54,7 @@
             @foreach ($allusers as $user)
                 @if(! $user->hasRole('admin'))
                     <div class="user">
-                        <a class="user-img" href="{{ route('user-profile',['id'=> $user->id]) }}" style="background-image: url('{{ Storage::url($user->user_profile_image) }}')"></a>
+                        <a class="user-img" href="{{ route('user-profile',['id'=> $user->id]) }}" style="background-image: url('{{ $user->user_profile_image }}')"></a>
                         <div class="user-name-cr-date" @if (str_replace('_', '-', app()->getLocale()) == 'ar') style="margin-left:0;margin-right:15px;" @endif>
                         <a href="{{ route('user-profile',['id'=> $user->id]) }}">
                             <span class="user-name">{{ $user->first_name }} {{ $user->last_name }}</span>
@@ -84,7 +84,7 @@
                                     @if (str_replace('_', '-', app()->getLocale()) == 'ar')
                                         <span class="post-owner-image" style="margin-right: 0;margin-left:12px">
                                             @if ($post->user->user_profile_image)
-                                                <img src="{{ Storage::url($post->user->user_profile_image) }}" alt="">
+                                                <img src="{{ $post->user->user_profile_image }}" alt="">
                                             @else
                                                 <i class="fas fa-user-tie"></i>
                                             @endif
@@ -92,7 +92,7 @@
                                     @else
                                         <span class="post-owner-image">
                                             @if ($post->user->user_profile_image)
-                                                <img src="{{ Storage::url($post->user->user_profile_image) }}" alt="">
+                                                <img src="{{ $post->user->user_profile_image }}" alt="">
                                             @else
                                                 <i class="fas fa-user-tie"></i>
                                             @endif
@@ -110,7 +110,7 @@
                                 <div class="post-images">
                                     <a href="{{ route('single-post',['id'=> $post->id]) }}">
                                         <div class="img-cont">
-                                            <img src="{{ Storage::url($post->images->first()->post_images) }}" alt="">
+                                            <img src="{{ $post->images->first()->post_images }}" alt="">
                                             <div class="post-img-overlay"></div>
                                         </div>
                                     </a>
@@ -153,7 +153,7 @@
                     @foreach ($admin_showing_asks as $ask)
                     <a href="{{ route('single-ask',['id' => $ask->id]) }}">
                         <div class="ask-item">
-                            <div class="user-img" style="background-image: url('{{ Storage::url($ask->user->user_profile_image) }}')"></div>
+                            <div class="user-img" style="background-image: url('{{ $ask->user->user_profile_image }}')"></div>
                             <div class="text" @if (str_replace('_', '-', app()->getLocale()) == 'ar') style="margin-left:0px;margin-right:20px;" @endif>
                                 <div class="ask-title">{{ $ask->post_title }}</div>
                                 <div class="ask-date">{{ $ask->created_at->diffForHumans()  }}</div>
