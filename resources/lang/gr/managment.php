@@ -20,11 +20,11 @@ return[
 
     'About Page' => 'Über Seite',
     'Add a about page section' => 'Fügen Sie einen Info-Abschnitt hinzu',
-
+    'theme page' => 'Themenseite',
     'Stories Page' => 'Geschichten-Seite',
     'Add a stories page section' => 'Fügen Sie einen Story-Seitenabschnitt hinzu',
     'donate page' => 'Spenden',
-    
+
     'by Ahmed Ragab' => 'by Ahmed Ragab',
     'Developed with love' => 'Mit Liebe entwickelt',
     'by Ahmed Ragab' => 'von Ahmed Ragab',

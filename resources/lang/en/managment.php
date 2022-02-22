@@ -21,6 +21,8 @@ return[
     'About Page' => 'About',
     'Add a about page section' => 'Add a about page section',
 
+    'theme page' => 'Theme',
+
     'Stories Page' => 'Stories',
     'Add a stories page section' => 'Add a stories page section',
     'donate page' => 'Donate',

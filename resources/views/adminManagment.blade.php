@@ -263,8 +263,7 @@
                     @endforeach
                 </section>
                 <section class="theme-page">
-                    <h2 @if (str_replace('_', '-', app()->getLocale()) == 'ar') class="ar" @endif>{{ __('managment.About Page') }}</h2 @if (str_replace('_', '-', app()->getLocale()) == 'ar') class="ar" @endif>
-                    <h4>{{ __('managment.Add a about page section') }}</h4>
+                    <h2 @if (str_replace('_', '-', app()->getLocale()) == 'ar') class="ar" @endif>{{ __('managment.theme page') }}</h2 @if (str_replace('_', '-', app()->getLocale()) == 'ar') class="ar" @endif>
                     <form action="{{ route('manage-theme') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @method('POST')

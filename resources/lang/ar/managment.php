@@ -21,6 +21,7 @@ return[
     'About Page' => 'صفحة نبذة عنا',
     'Add a about page section' => 'اضف قسم لصفحة نبذة عنا',
 
+    'theme page' => 'شكل الموقع',
     'Stories Page' => 'صفحة القصص',
     'Add a stories page section' => 'اضف قسم لصفحة القصص',
     'donate page' => 'تبرع',
