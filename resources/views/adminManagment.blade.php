@@ -336,6 +336,43 @@
                 sideBar.classList.toggle('active');
             }
         })
+        // manage search users
+        let searchIcon = document.querySelector('div.search-users i')
+        searchIcon.addEventListener('click',(e)=>{
+            document.querySelector('div.search-users input').classList.toggle('active')
+        })
+        let searchInput =  document.querySelector('.search-users input');
+        searchInput.addEventListener('click',(e)=>{
+            e.stopPropagation()
+        })
+        document.querySelectorAll('ul.search-results li').forEach(li=>{
+            li.addEventListener('click',(e)=>{
+                e.stopPropagation()
+            })
+        })
+        let usersArr = []
+        searchInput.oninput = (e)=>{
+            if(searchInput.value){
+                document.querySelector('ul.search-results').style.display = 'block'
+                let filtering = new RegExp(e.currentTarget.value, "i");
+                document.querySelectorAll('ul.search-results li').forEach(li=>{
+                    usersArr.push(li)
+                })
+                document.querySelectorAll("ul.search-results li").forEach(el=>{
+                    el.remove()
+                })
+                let matchedUser = usersArr.filter(el=>{
+                    return el.textContent.match(filtering)
+                })
+                matchedUser.forEach(user=>{
+                    document.querySelector('ul.search-results').appendChild(user)
+                })
+            }else{
+                document.querySelectorAll("ul.search-results li").forEach(el=>{
+                    el.remove()
+                })
+            }
+        }
     </script>
 </body>
 </html>
