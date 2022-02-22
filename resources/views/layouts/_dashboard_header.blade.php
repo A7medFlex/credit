@@ -11,7 +11,7 @@
                 @foreach ($allusers as $user)
                 <li>
                     <a href="{{ route('user-profile',['id'=> $user->id]) }}">
-                        <span class="search-img" style="background-image: url('{{ Storage::url($user->user_profile_image) }}')"></span>
+                        <span class="search-img" style="background-image: url('{{ $user->user_profile_image }}')"></span>
                         <span class="search-name">{{ $user->first_name }} {{ $user->last_name }}</span>
                     </a>
                 </li>
@@ -20,7 +20,7 @@
             <a href="{{ route('user-profile',['id'=> Auth::user()->id]) }}">
                 <div class="user-avatar">
                     @if (Auth::user()->user_profile_image)
-                        <img src="{{ Storage::url(Auth::user()->user_profile_image) }}" alt="">
+                        <img src="{{ Auth::user()->user_profile_image }}" alt="">
                     @else
                         <i class="fas fa-user-tie"></i>
                     @endif

@@ -11,6 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Storage;
 
 class RegisteredUserController extends Controller
 {
@@ -42,11 +43,16 @@ class RegisteredUserController extends Controller
             'country' => ['required', 'string', 'max:255'],
             'country_code' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string','min:10', 'max:255'],
+            'user_profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $path = $request->user_profile_image->store('public/'.'/user_profile_images');
+        // $path = $request->user_profile_image->store('public/'.'/user_profile_images');
+
+        $path = Storage::disk('s3')->put('user_profile_images', $request->user_profile_image,'public');
+        // $path = $request->user_profile_image->storePublicly()
+        $path = Storage::disk('s3')->url($path);
 
         if($request->role == 'admin'){
             abort(403);
