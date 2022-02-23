@@ -45,6 +45,7 @@ section.posts-timeline{
             flex: 1;
             font-size: 32px;
             color: var(--dominant-bmode-color);
+            padding: 0 20px;
             @media (max-width:400px) {
                 font-size: 28px;
             }
