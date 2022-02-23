@@ -370,6 +370,8 @@
                             color: var(--dominant-bmode-color);
                             font-size: 22px;
                             margin-bottom: 5px;
+                            max-height: 130px;
+                            overflow: hidden;
                         }
                         .post-date{
                             font-weight: bold;

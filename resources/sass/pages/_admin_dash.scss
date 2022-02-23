@@ -44,6 +44,8 @@ section.admin-dash {
             }
         }
         div.latest-users{
+            max-height: 65vh;
+            overflow: auto;
             .user{
                 display: flex;
                 width: 95%;
@@ -106,6 +108,8 @@ section.admin-dash {
         }
         div.latest-posts{
             min-height: 25vh;
+            max-height: 65vh;
+            overflow: auto;
             p{
                 font-size: 25px;
                 color: var(--dominant-bmode-color);
@@ -116,6 +120,8 @@ section.admin-dash {
         }
         div.latest-asks{
             min-height: 15vh;
+            max-height: 65vh;
+            overflow: auto;
             p{
                 font-size: 25px;
                 color: var(--dominant-bmode-color);
@@ -161,6 +167,8 @@ section.admin-dash {
             }
         }
         div.latest-posts{
+            max-height: 65vh;
+            overflow: auto;
             .whole-posts{
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -305,6 +313,8 @@ section.admin-dash {
                             color: var(--dominant-bmode-color);
                             font-size: 22px;
                             margin-bottom: 5px;
+                            max-height: 130px;
+                            overflow: hidden;
                         }
                         &.no-img{
                             width: 100%;
