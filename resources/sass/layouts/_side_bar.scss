@@ -54,6 +54,10 @@ aside.dash-aside{
         margin-left: 25px;
         margin-bottom: 15px;
         font-weight: 500;
+        i{
+            font-size: 25px;
+            margin: 0 4px;
+        }
         &:nth-child(3){
             margin-top: 20px;
         }
