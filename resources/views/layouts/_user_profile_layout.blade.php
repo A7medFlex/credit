@@ -109,10 +109,10 @@
                         <span class="create-post">+ {{ __('dashboard.create') }}</span>
                     @endif
                 </div>
-                @if (Auth::user()->hasRole('user') || Auth::user()->hasRole('admin'))
+                @if ($user()->hasRole('user') || $user()->hasRole('admin'))
                     <div class="no-activities" style="color: var(--compl-2);font-size: 30px;font-weight: 500;">{{ __('settings.No activities yet.') }}</div>
                 @endif
-                @if (Auth::user()->hasRole('donator'))
+                @if ($user()->hasRole('donator'))
                     <div class="user-profile-posts">
                         <div class="whole-posts">
                             @foreach($posts AS $post)
