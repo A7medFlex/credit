@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         $request->validate([
             'post_title' => ['required', 'string','min:3', 'max:255'],
-            'post_content' => ['required', 'string','min:5'],
+            'post_content' => ['required','string','min:5'],
         ]);
         $user = Auth::user();
         $post = PostsModell::create([
