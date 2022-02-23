@@ -19,7 +19,7 @@
                             <option value="">{{ __('dashboard.selectCo') }}</option>
                             <option value="all">All</option>
                             @foreach ( $countries as $country )
-                                <option value="{{ $country->name }}">{{ ucfirst(strtolower($country->name)) }}</option>
+                                <option value="{{ ucfirst(strtolower($country->name)) }}">{{ ucfirst(strtolower($country->name)) }}</option>
                             @endforeach
                         </select>
                     </form>
