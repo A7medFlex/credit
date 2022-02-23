@@ -97,6 +97,8 @@ header.dash-header{
                 @media (max-width:350px) {
                     width: 260px;
                 }
+                max-height: 400px;
+                overflow: scroll;
                 position: fixed;
                 background-color: var(--dominant-wmode-color);
                 width: 300px;
