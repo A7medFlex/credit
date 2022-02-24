@@ -27,7 +27,6 @@ class TrustProxies extends Middleware
     //     Request::HEADER_X_FORWARDED_AWS_ELB;
 
     // the comming configuration specific for heroku
-    // protected $proxies = '*';
-    // protected $headers = Request:: HEADER_X_FORWARDED_AWS_ELB;
-    protected $headers = Request::HEADER_X_FORWARDED_ALL;
+    protected $proxies = '*';
+    protected $headers = Request:: HEADER_X_FORWARDED_AWS_ELB;
 }
